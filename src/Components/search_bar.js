@@ -12,5 +12,7 @@ const SearchBar = () => {
 }
 
 // Exporting SearchBar will let us use SearchBar in other files, we'll need to 
-// import SearchBar on the other files in order to have access to the function
+// import SearchBar on the other files in order to have access to the function.
+// default means that if we don't specify a function to export out of search_bar.jsx,
+// it will default to SearchBar
 export default SearchBar
