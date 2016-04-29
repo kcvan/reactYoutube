@@ -10,3 +10,7 @@ const SearchBar = () => {
   // be rendered
   return <input />;
 }
+
+// Exporting SearchBar will let us use SearchBar in other files, we'll need to 
+// import SearchBar on the other files in order to have access to the function
+export default SearchBar
