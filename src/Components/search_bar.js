@@ -70,9 +70,23 @@ class SearchBar extends Component {
       // NEVER do this.state = event.target.value
       // Whenever we reference javascript variables, we have to wrap them in handle bars.
       // We can reference state like this, but never alter it.
+
+      // By setting value={this.state.term}, this is now something called a
+      // controlled component. The value is dictated by the state, not the
+      // other way around. How we had it before was like a puny worker telling
+      // his big boss what to do, by making it a controlled component, the boss
+      // tells the worker what to do now. Also called controlled form element.
+      // The way we have it now, when the user enters text, this.state.term will
+      // update the state, but the value of the input has not actually changed.
+      // By setting value={this.state.term}, the value of the input will be updated
+      // to the value of the text that was typed. The difference is, that before when
+      // the use types something, all it did was trigger an event, but didn't actually
+      // change the value.
     return (
       <div>
-        <input onChange={event => this.setState({ term: event.target.value })} />
+        <input 
+          value={this.state.term}
+          onChange={event => this.setState({ term: event.target.value })} />
         Value of the input: {this.state.term}
       </div>
     );
