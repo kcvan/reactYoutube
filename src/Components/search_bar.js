@@ -29,7 +29,27 @@ import React, { Component } from "react";
 // along to other places, this is called a smart component, rather than a dumb
 // component that just renders jsx.
 
-class SearchBar extends Component{
+class SearchBar extends Component {
+  // All class-based components have a built-in contructor function which is the
+  // first and only function that is called automatically whenever a new instance
+  // of the class is created. The constructor function is reseved for doing some
+  // setup inside of our class, like initializing variables and state and things.
+  // Super allows us to call a method on the parent class (Component) that we extended
+  // from.
+  constructor(props) {
+    super(props);
+
+    // This is how we initialize "state" in a classe based component. Only
+    // class-based component have state. When we create state, we always
+    // say this.state and assign it to a new object. The object we pass
+    // will have properties that we want to record on the state. We name
+    // this particular property term because it is short for "search term", 
+    // which will be the value that we want to update when the search bar changes.
+    this.state = { term: "" };
+  }
+
+
+
   // Although it does not look like a method with the classic key/value pair,
   // it is indeed a function. The onChange is tracking for changes in the 
   // input box. To track any type of event, you just type "on" + event={handler}.
@@ -41,13 +61,14 @@ class SearchBar extends Component{
     return <input onChange={event => console.log(event.target.value)} />;
   }
 
-  // Here, we declare an event handler which is a funtion that will run whenever
+  // Here, we declared (now refactored) an event handler which is a funtion that will run whenever
   // the event occurs. We pass the handler to the element that we want to monitor
   // the event. In our case, we want to keep track of whenever the input changes 
   // Usually the syntax for event handlers will be "on" or "handle" + element + event.
   // All native browser events will always get passed an event object, which stores
   // information on the event that occured. Basically here, we can get the text that
   // was changed from the event object.
+
 
 
   // Refactored to use arrow function
