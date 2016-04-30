@@ -45,6 +45,9 @@ class SearchBar extends Component {
     // will have properties that we want to record on the state. We name
     // this particular property term because it is short for "search term", 
     // which will be the value that we want to update when the search bar changes.
+    // Only inside our constructor function, can we set state in this fashion.
+    // Everywhere else in our code, we will have to use "this.setState({})", 
+    // where inside the object, we change the properties
     this.state = { term: "" };
   }
 
@@ -57,8 +60,22 @@ class SearchBar extends Component {
   // the value of onInputChange".
   render() {
     // return <input onChange={this.onInputChange} />;
-    // Refactor to use arrow functions
-    return <input onChange={event => console.log(event.target.value)} />;
+
+      // Refactor to use arrow functions: 
+      // COMMENTS ARE OUTSIDE RETURN STATEMENT BECAUSE THEY WILL BE RENDERED IF INSIDE.
+      // Notice how we use parathesis and a div to wrap out input element and
+      // text, we have to do this in order to render multiple things.
+      // Notice how we changed out state, we did not just do "this.state =...".
+      // Anywhere outside of the constructor, this is how we must set our state.
+      // NEVER do this.state = event.target.value
+      // Whenever we reference javascript variables, we have to wrap them in handle bars.
+      // We can reference state like this, but never alter it.
+    return (
+      <div>
+        <input onChange={event => this.setState({ term: event.target.value })} />
+        Value of the input: {this.state.term}
+      </div>
+    );
   }
 
   // Here, we declared (now refactored) an event handler which is a funtion that will run whenever
@@ -76,10 +93,10 @@ class SearchBar extends Component {
   //   // You can see the changing values in the console with this \/
   //   // console.log(event.target.value);
   // }
-
-
-
 }
+
+
+
 
 // Exporting SearchBar will let us use SearchBar in other files, we'll need to 
 // import SearchBar on the other files in order to have access to the function.
