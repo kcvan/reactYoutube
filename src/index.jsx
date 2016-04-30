@@ -36,7 +36,7 @@ const App = () => {
     <div>
       <SearchBar />
     </div>
-  )
+  );
 }
 
 
