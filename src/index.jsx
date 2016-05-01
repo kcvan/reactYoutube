@@ -13,7 +13,12 @@ import YTSearch from "youtube-api-search";
 // SearchBar is just a variable/place holder, we can call it anything once we import it.
 // Unlike libraries, we have to specify the file path. You don't need to add an
 // extension if the file is a .js or .jsx file
-import SearchBar from "./components/search_bar";
+import SearchBar from "./Components/search_bar";
+
+// Importing our VideoList from video_list.js
+import VideoList from "./Components/video_list";
+
+import VideoDetail from "./Components/video_detail";
 
 // Declaring a constant to hold our API key
 // Go to Google Youtube API to get your own API key
@@ -60,6 +65,7 @@ const API_KEY = "";
 // We moved out api call inside the constructor function so we can pass the data
 // into the state. We initilized state with an empty array, but it will get updated
 // with an array of objects from our search.
+
 // Our refactored code will look like:
 // YTSearch({ key: API_KEY, term: "surfboards"}, function(data) {
 //   console.log(data);
@@ -67,14 +73,26 @@ const API_KEY = "";
 // but in ES6, when you have the key and value named the same, you can just do like
 // we did below
 
+// We want to pass data from the parent to VideoList, to do this, we defined a
+// property videos, and assigned it to this.state.videos. This is called passing
+// props(properties) down from the parent component(app). When we create properties
+// on components, they get passed in as an object called props as an argument
+// in the original component. In a functional component, props are passed as
+// an argument, in class-based components, you can reference by saying this.props
+
 class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { videos: [] };
+    this.state = { 
+      videos: [],
+      selectedVideo: null 
+    };
 
-    YTSearch({ key: API_KEY, term: "surfboards"}, (videos) => {
-      this.setState({ videos }) 
+    YTSearch({ key: API_KEY, term: "surfboards" }, (videos) => {
+      this.setState({ 
+        videos: videos,
+        selectedVideo: videos[0] }) 
     });
 
   }
@@ -82,6 +100,10 @@ class App extends Component {
     return (
       <div>
         <SearchBar />
+        <VideoDetail video={this.state.selectedVideo} />
+        <VideoList 
+          onVideoSelect={selectedVideo => this.setState({selectedVideo})}
+          videos={this.state.videos} />
       </div>
     );
   }

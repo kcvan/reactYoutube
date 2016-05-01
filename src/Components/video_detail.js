@@ -3,6 +3,8 @@ import React from "react";
 // By now, we should be able to follow along with our code
 
 const VideoDetail = ({video}) => {
+  // Although we're returning a div that will exit the function, React will rerender
+  // itself on change in state, so when a video is finally found, it will rerender
   if(!video) {
     return <div>Loading...</div>;
   }
