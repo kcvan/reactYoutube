@@ -83,13 +83,17 @@ class SearchBar extends Component {
       // the use types something, all it did was trigger an event, but didn't actually
       // change the value.
     return (
-      <div>
+      <div className="search-bar">
         <input 
           value={this.state.term}
-          onChange={event => this.setState({ term: event.target.value })} />
-        Value of the input: {this.state.term}
+          onChange={event => this.onInputChange(event.target.value)} />
       </div>
     );
+  }
+
+  onInputChange(term) {
+    this.setState({term});
+    this.props.onSearchTermChange(term);
   }
 
   // Here, we declared (now refactored) an event handler which is a funtion that will run whenever
