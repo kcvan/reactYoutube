@@ -1,3 +1,4 @@
+import _ from "lodash";
 // This imports react from the module. This knows how to render and nest components. 
 // With libraries that we import, we don't need to specify a file path, unlike
 // files we create.
@@ -103,9 +104,10 @@ class App extends Component {
   }
 
   render() {
+    const videoSearch = _.debounce((term) => { this.videoSearch(term) }, 300);
     return (
       <div>
-        <SearchBar onSearchTermChange ={term => this.videoSearch(term)} />
+        <SearchBar onSearchTermChange ={videoSearch} />
         <VideoDetail video={this.state.selectedVideo} />
         <VideoList 
           onVideoSelect={selectedVideo => this.setState({selectedVideo})}
