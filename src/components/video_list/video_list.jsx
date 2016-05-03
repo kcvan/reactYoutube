@@ -4,7 +4,7 @@ import React from "react";
 // of the keyword class to create class-based components.
 
 // importing video_list_item
-import VideoListItem from "./video_list_item";
+import VideoListItem from "../video_list_item/video_list_item";
 
 // The props argument is passed down from index.jsx, when we created the videos property
 // inside VideoList.

@@ -14,12 +14,12 @@ import YTSearch from "youtube-api-search";
 // SearchBar is just a variable/place holder, we can call it anything once we import it.
 // Unlike libraries, we have to specify the file path. You don't need to add an
 // extension if the file is a .js or .jsx file
-import SearchBar from "./Components/search_bar";
+import SearchBar from "./components/search_bar/search_bar";
 
 // Importing our VideoList from video_list.js
-import VideoList from "./Components/video_list";
+import VideoList from "./components/video_list/video_list";
 
-import VideoDetail from "./Components/video_detail";
+import VideoDetail from "./components/video_detail/video_detail";
 
 // Declaring a constant to hold our API key
 // Go to Google Youtube API to get your own API key
